@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import plotly.express as px
 
 st.set_page_config(
@@ -63,7 +64,8 @@ if st.session_state['calculate']: # Calculate only if dates have changed
     # Open browser
     options = Options()
     options.add_argument('--headless')
-    browser = webdriver.Chrome(service=Service(), options=options)
+    service = Service(ChromeDriverManager().install())
+    browser = webdriver.Chrome(service=service, options=options)
     base_url = 'https://www.murc-kawasesouba.jp/fx/past/index.php?id='
     # Loop through dates
     progress_text = 'データ取得中...'
