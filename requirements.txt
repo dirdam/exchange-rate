@@ -1,3 +1,4 @@
 selenium
+seleniumbase
 webdriver-manager
 plotly
